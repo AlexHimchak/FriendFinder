@@ -35,11 +35,11 @@ app.post("/api/friends", function(req, res) {
 
     console.log(req.body);
 
-      currRes.push(req.body);
-      console.log('Added friend!');
-      res.status(200).send(true);
+    currRes.push(req.body);
+    console.log('Added friend!');
+    res.status(200).send(true);
 
-      
+
 });
 app.get("/api/:viewjson", function(req, res) {
 
@@ -49,5 +49,5 @@ app.get("/api/:viewjson", function(req, res) {
 // The below code effectively "starts" our server
 // ==============================================================================
 app.listen(PORT, function() {
-  console.log("App listening on PORT: " + PORT);
+    console.log("App listening on PORT: " + PORT);
 });

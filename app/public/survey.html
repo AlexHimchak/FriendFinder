@@ -162,84 +162,50 @@ $("#submit").on("click", function() {
         });
 
     $.ajax({ url: currentURL + "/api/friends", method: "GET" })
-    .done(function(friendData) {
+        .done(function(friendData) {
 
-        // Here we then log the NYTData to console, where it will show up as an object.
-        console.log(friendData);
-        console.log(friendData[0].selection[2]);
-        var totalScore = 100;
-        var score = 0;
-        var a = [];
-        var j = friendData.length - 1;
-        // Loop through and display each of the customers
-        for (var i = 0; i < friendData.length - 1; i++) {
+            // Here we then log the NYTData to console, where it will show up as an object.
+            console.log(friendData);
+            console.log(friendData[0].selection[2]);
+            var totalScore = 100;
+            var score = 0;
+            var a = [];
+            var j = friendData.length - 1;
+            // Loop through and display each of the customers
+            for (var i = 0; i < friendData.length - 1; i++) {
 
-            var score1 = Math.abs(friendData[i].selection[0] - friendData[j].selection[0]);
-            var score2 = Math.abs(friendData[i].selection[1] - friendData[j].selection[1]);
-            var score3 = Math.abs(friendData[i].selection[2] - friendData[j].selection[2]);
-            var score4 = Math.abs(friendData[i].selection[3] - friendData[j].selection[3]);
-            var score5 = Math.abs(friendData[i].selection[4] - friendData[j].selection[4]);
-            var score6 = Math.abs(friendData[i].selection[5] - friendData[j].selection[5]);
-            var score7 = Math.abs(friendData[i].selection[6] - friendData[j].selection[6]);
-            var score8 = Math.abs(friendData[i].selection[7] - friendData[j].selection[7]);
-            var score9 = Math.abs(friendData[i].selection[8] - friendData[j].selection[8]);
-            var score10 = Math.abs(friendData[i].selection[9] - friendData[j].selection[9]);
-            totalScore = score1 + score2 + score3 + score4 + score5 + score6 + score7 + score8 + score9 + score10;
-            a[i] = totalScore;
-        };
-        var index = 0;
-        var value = a[0];
-        for (var i = 1; i < a.length; i++) {
-            if (a[i] < value) {
-                value = a[i];
-                index = i;
+                var score1 = Math.abs(friendData[i].selection[0] - friendData[j].selection[0]);
+                var score2 = Math.abs(friendData[i].selection[1] - friendData[j].selection[1]);
+                var score3 = Math.abs(friendData[i].selection[2] - friendData[j].selection[2]);
+                var score4 = Math.abs(friendData[i].selection[3] - friendData[j].selection[3]);
+                var score5 = Math.abs(friendData[i].selection[4] - friendData[j].selection[4]);
+                var score6 = Math.abs(friendData[i].selection[5] - friendData[j].selection[5]);
+                var score7 = Math.abs(friendData[i].selection[6] - friendData[j].selection[6]);
+                var score8 = Math.abs(friendData[i].selection[7] - friendData[j].selection[7]);
+                var score9 = Math.abs(friendData[i].selection[8] - friendData[j].selection[8]);
+                var score10 = Math.abs(friendData[i].selection[9] - friendData[j].selection[9]);
+                totalScore = score1 + score2 + score3 + score4 + score5 + score6 + score7 + score8 + score9 + score10;
+                a[i] = totalScore;
+            };
+            var index = 0;
+            var value = a[0];
+            for (var i = 1; i < a.length; i++) {
+                if (a[i] < value) {
+                    value = a[i];
+                    index = i;
+                }
             }
-        }
-        console.log(a);
-        console.log(index);
-    $('#myModal').modal('show');
-    $(".modal-body").append(friendData[index].name);
-    });
+            console.log(a);
+            console.log(index);
+            $('#myModal').modal('show');
+            $(".modal-body").append(friendData[index].name);
+            $(".modal-body").append('<img src="' + friendData[index].photo + '" width="300" />');
+
+
+
+
+        });
 });
-// var currentURL = window.location.origin;
-
-// $.ajax({ url: currentURL + "/api/friends", method: "GET" })
-//     .done(function(friendData) {
-
-//         // Here we then log the NYTData to console, where it will show up as an object.
-//         console.log(friendData);
-//         console.log(friendData[0].selection[2]);
-//         var totalScore = 100;
-//         var score = 0;
-//         var a = [];
-//         var j = friendData.length - 1;
-//         // Loop through and display each of the customers
-//         for (var i = 0; i < friendData.length - 1; i++) {
-
-//             var score1 = Math.abs(friendData[i].selection[0] - friendData[j].selection[0]);
-//             var score2 = Math.abs(friendData[i].selection[1] - friendData[j].selection[1]);
-//             var score3 = Math.abs(friendData[i].selection[2] - friendData[j].selection[2]);
-//             var score4 = Math.abs(friendData[i].selection[3] - friendData[j].selection[3]);
-//             var score5 = Math.abs(friendData[i].selection[4] - friendData[j].selection[4]);
-//             var score6 = Math.abs(friendData[i].selection[5] - friendData[j].selection[5]);
-//             var score7 = Math.abs(friendData[i].selection[6] - friendData[j].selection[6]);
-//             var score8 = Math.abs(friendData[i].selection[7] - friendData[j].selection[7]);
-//             var score9 = Math.abs(friendData[i].selection[8] - friendData[j].selection[8]);
-//             var score10 = Math.abs(friendData[i].selection[9] - friendData[j].selection[9]);
-//             totalScore = score1 + score2 + score3 + score4 + score5 + score6 + score7 + score8 + score9 + score10;
-//             a[i] = totalScore;
-//         };
-//         var index = 0;
-//         var value = a[0];
-//         for (var i = 1; i < a.length; i++) {
-//             if (a[i] < value) {
-//                 value = a[i];
-//                 index = i;
-//             }
-//         }
-//         console.log(a);
-//         console.log(index);
-//     });
 </script>
 
 </html>
